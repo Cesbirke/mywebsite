@@ -1,3 +1,3 @@
 "# mywebsite" 
 "# mywebsite" 
-# Lob und Kritik
+# My first own website
