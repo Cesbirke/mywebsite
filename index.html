@@ -25,6 +25,15 @@
         </div>
     </div>
 
+     <div class="dropdown">
+        <button class="dropbtn">About the Company</button>
+        <div class="dropdown-content">
+            <a href="#">Statista is a Company</a>
+            <a class="big-line">over 1.400+ employees</a>
+            <a class="big-line">8 offices all around the world</a>
+            <a class="big-line">for everyone->no specified customers</a>
+        </div>
+    </div>
 
 </body>
 <style>
@@ -87,7 +96,52 @@
     }
 
     .dropdown:hover .dropbtn {
-        background-color: red;
+        background-color: aliceblue;
+    }
+
+    .big-line {
+       padding: 12px 16px;
+        }
+
+    .dropbtn {
+        background-color: aliceblue;
+        color: black;
+        padding: 20px;
+        font-size: 20px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: aliceblue;
     }
 
     .big-line {
