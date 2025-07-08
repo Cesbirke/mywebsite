@@ -17,8 +17,8 @@
   <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
   <style>
     .gradient {
-        background: linear-gradient(90deg, #0F2741 0%, #0F2741 100%);
-      }
+      background: linear-gradient(90deg, #0F2741 0%, #0F2741 100%);
+    }
   </style>
 </head>
 
@@ -109,21 +109,23 @@
             More about Statista
           </h3>
           <p class="text-gray-600 mb-8">
-            I spend my 2 weeks internship at the Revenue Tech department at the Headquarter of Statista, where I learned to code and designed this website on my own.
+            I spend my 2 weeks internship at the Revenue Tech department at the Headquarter of Statista, where I learned
+            to code and designed this website on my own.
             It is important to know, that Statista is a Company, which provides people and other Companies with data.
             Statista has 8 offices all around the world. The Headquarter is located in Hamburg with over 1.200
             employees, where I completed my internship.
 
           </p>
         </div>
-        <div class="w-full sm:w-1/2 p-6">
-          <img class="w-full sm:h-64 mx-auto rounded-lg" src="statista-locations.png" alt="Statista's locations">
-           <div class="relative bottom-20 left-0 right-0 px-4 py-2 bg-gray-800 opacity-70">
-            <h3 class="text-xl text-white font-bold">
-                Office locations</h3>
-            <p class="mt-2 text-sm text-gray-300">Hamburg, Berlin, London, New York, Gurugram, Melbourne, Singapore, Tokyo
+        <div class="group w-full sm:w-1/2 p-6">
+          <img class="w-full sm:h-64 mx-auto rounded-lg" src="statista-locations.png" alt="Statista's locations" />
+          <div class="group-hover:opacity-70 transition-opacity opacity-0 relative bottom-24 left-0 right-0 px-4 py-3 bg-gray-800">
+            <h3 class="group-hover:opacity-100 transition-opacity text-xl text-white font-bold">
+              Office locations</h3>
+            <p class="group-hover:opacity-100 transition-opacity mt-2 text-gray-300">Hamburg, Berlin, London, New York, Gurugram, Melbourne, Singapore,
+              Tokyo
             </p>
-        </div>
+          </div>
           <title>statista-locations</title>
         </div>
 
@@ -175,8 +177,12 @@
             <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
               Brahms-Kontor
             </h3>
-            <p class="text-gray-600 mb-8"> 
-            The Brahms-Kontor" is an historically important building, in the center of Hamburg, next to the park "Planten un Bloomen". With 12 floors, it was once the tallest building of Hamburg. Furthermore, it was named after the famous composer Johannes Brahms, who once lived there and has already served as a filming location for famous series and movies, such as the "Tatortreiniger". Nowadays, it is the Headquarter of Statista and my internship workplace. 
+            <p class="text-gray-600 mb-8">
+              The Brahms-Kontor" is an historically important building, in the center of Hamburg, next to the park
+              "Planten un Bloomen". With 12 floors, it was once the tallest building of Hamburg. Furthermore, it was
+              named after the famous composer Johannes Brahms, who once lived there and has already served as a filming
+              location for famous series and movies, such as the "Tatortreiniger". Nowadays, it is the Headquarter of
+              Statista and my internship workplace.
             </p>
           </div>
         </div>
@@ -298,7 +304,7 @@
       <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
     <h3 class="my-4 text-3xl leading-tight">
-      You are the ... visitor!
+      You are the <span id="visitor-count"></span>th visitor!
     </h3>
 
   </section>
@@ -383,6 +389,19 @@
       }
       return false;
     }
+  </script>
+  <script>
+    // Retrieve the current count from localStorage
+    let count = localStorage.getItem('visitorCount') || 0;
+
+    // Increment the count
+    count++;
+
+    // Save the updated count back to localStorage
+    localStorage.setItem('visitorCount', count);
+
+    // Display the count on the page
+    document.getElementById('visitor-count').textContent = count;
   </script>
 </body>
 
