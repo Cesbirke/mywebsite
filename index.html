@@ -19,11 +19,17 @@
     .gradient {
       background: linear-gradient(90deg, #0F2741 0%, #0F2741 100%);
     }
-    .flip-card {perspective: 1000px;}
-    .flip-card:hover .flip-card-inner{ transition: transform 0.8s; transform:rotateY(180deg)}
 
+    .flip-card {
+      perspective: 1000px;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transition: transform 0.8s;
+      transform: rotateY(360deg)
+    }
   </style>
-  
+
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
@@ -123,10 +129,12 @@
         </div>
         <div class="group w-full sm:w-1/2 p-6">
           <img class="w-full sm:h-64 mx-auto rounded-lg" src="statista-locations.png" alt="Statista's locations" />
-          <div class="group-hover:opacity-70 transition-opacity opacity-0 relative bottom-24 left-0 right-0 px-4 py-3 bg-gray-800">
+          <div
+            class="group-hover:opacity-70 transition-opacity opacity-0 relative bottom-24 left-0 right-0 px-4 py-3 bg-gray-800">
             <h3 class="group-hover:opacity-100 transition-opacity text-xl text-white font-bold">
               Office locations</h3>
-            <p class="group-hover:opacity-100 transition-opacity mt-2 text-gray-300">Hamburg, Berlin, London, New York, Gurugram, Melbourne, Singapore,
+            <p class="group-hover:opacity-100 transition-opacity mt-2 text-gray-300">Hamburg, Berlin, London, New York,
+              Gurugram, Melbourne, Singapore,
               Tokyo
             </p>
           </div>
@@ -301,14 +309,14 @@
     </g>
   </svg>
   <section class="container mx-auto text-center py-6 mb-12">
-    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
+    <h2 class="my-2 text-5xl font-bold leading-tight text-center text-white">
       Visitorcount
     </h2>
     <div class="w-full mb-4">
       <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
-    <h3 class="my-4 text-3xl leading-tight">
-      <!--You are the <span id="visitor-count"></span>th visitor!-->
+    <h3 id="visitor-count" class="my-4 text-3xl leading-tight">
+     You are the 1th visitor
     </h3>
 
   </section>
@@ -395,17 +403,27 @@
     }
   </script>
   <script>
-    // Retrieve the current count from localStorage
-    let count = localStorage.getItem('visitorCount') || 0;
-
-    // Increment the count
-    count++;
-
-    // Save the updated count back to localStorage
-    localStorage.setItem('visitorCount', count);
-
+    getData() // get count from lambda
     // Display the count on the page
-    document.getElementById('visitor-count').textContent = count;
+    
+    async function getData() {
+      const url = "https://oj6amjjrrg47gwsd6bktjkmyju0icoef.lambda-url.eu-central-1.on.aws/";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(JSON.stringify(json.visitors));
+        document.getElementById('visitor-count').textContent = `You are the ${json.visitors}th visitor!`;
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    // TODO: increment count (+1)
+
+    
   </script>
 </body>
 
