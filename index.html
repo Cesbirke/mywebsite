@@ -30,6 +30,19 @@
       transition: transform 0.8s;
       transform: rotateY(360deg)
     }
+    .loader {
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    display: inline-block
+    }
+   @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
   </style>
 
 </head>
@@ -324,7 +337,7 @@
       <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
     <h3 id="visitor-count" class="my-4 text-3xl leading-tight">
-      You are the loading... visitor
+      You are the <span class="loader"></span> visitor!
     </h3>
 
   </section>
